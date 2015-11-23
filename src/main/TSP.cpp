@@ -6,9 +6,10 @@
 #include "Filter.h"
 #include "Plot.h"
 #include "BenchLogger.h"
+#include "ScalarOptimization.h"
 
 #define SIZE 100
-#define OBJECTIVE 3
+#define OBJECTIVE 2
 
 int main() {
 
@@ -26,9 +27,11 @@ int main() {
 		permutation.rand();
 		permutation.execute(solution);
 
+		ScalarOptimization<SIZE, OBJECTIVE>::execute(instance, solution);
+
 		fitness_list.push_back(Fitness::execute(instance, solution));
 	}
-
+/*
 	std::vector<FitnessPoint<OBJECTIVE>> dominate_fitness_list;
 
 	OfflineFilter<BenchLogger>::execute(fitness_list, dominate_fitness_list);
@@ -42,6 +45,8 @@ int main() {
 	std::cout << "Comparaison : " << BenchLogger::comparaison_number() << std::endl;
 
 	PlotFitness::execute(fitness_list, "fitness_file.data");
+
+*/
 /*
 	OnlineFilter<OBJECTIVE> filter;
 

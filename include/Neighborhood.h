@@ -58,4 +58,61 @@ private:
 
 };
 
+
+template<unsigned int Size>
+class TwoOpt {
+
+public:
+	TwoOpt() : _index1(0), _index2(0) {
+		incrementIndex();
+	}
+
+	void incrementIndex() {
+		_index1++;
+
+		if(_index1 == _index2) {
+			_index1++;
+		}
+
+		if(_index1 >= Size) {
+			_index2++;
+			_index1 = 0;
+		}
+
+		if(_index1 == _index2) {
+			_index1++;
+		}
+
+		if(_index2 >= Size) {
+			_index1 = 0;
+			_index2 = 1;
+		}
+	}
+
+	void rand() {
+		_index1 = ::rand()%Size;
+		_index2 = ::rand()%Size;
+
+		if(_index1 == _index2) {
+			_index2++;
+		}
+
+		if(_index2 >= Size) {
+			_index2 = 0;
+		}
+	}
+
+	void execute(Solution<Size>& solution) {
+		unsigned int min_index = std::min(_index1, _index2);
+		unsigned int max_index = std::max(_index1, _index2);
+
+		std::reverse(solution._order[min_index], solution._order[max_index]);
+	}
+
+private:
+	unsigned int _index1;
+	unsigned int _index2;
+
+};
+
 #endif
