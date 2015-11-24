@@ -17,7 +17,7 @@ int main() {
 	ParserTSP::execute(instance, "data/randomA100.tsp", "data/randomB100.tsp", "data/randomC100.tsp");
 
 	std::vector<FitnessPoint<OBJECTIVE>> fitness_list;
-
+/*
 	for(unsigned int i = 0; i < 5000; i++) {
 		Solution<SIZE> solution;
 
@@ -27,10 +27,12 @@ int main() {
 		permutation.rand();
 		permutation.execute(solution);
 
-		ScalarOptimization<SIZE, OBJECTIVE>::execute(instance, solution);
 
 		fitness_list.push_back(Fitness::execute(instance, solution));
 	}
+	*/
+	ScalarOptimization<SIZE, OBJECTIVE>::execute(instance, solution, fitness_list);
+
 /*
 	std::vector<FitnessPoint<OBJECTIVE>> dominate_fitness_list;
 
