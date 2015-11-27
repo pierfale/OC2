@@ -30,7 +30,7 @@ class Fitness {
 
 public:
 	template<unsigned int Size, unsigned int Objective>
-	static FitnessPoint<Objective> execute(const Instance<Size, Objective>& instance, const Solution<Size>& solution)  {
+	static FitnessPoint<Objective> generate(const Instance<Size, Objective>& instance, const Solution<Size>& solution)  {
 		FitnessPoint<Objective> fitness;
 		for(unsigned int i=0; i<Objective; i++) {
 			fitness._fitness[i] = unique(instance, solution, i);

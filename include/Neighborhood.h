@@ -89,8 +89,8 @@ public:
 		}
 
 		if(_index2 >= Size) {
-			_index1 = 0;
-			_index2 = 1;
+			_index1 = 1;
+			_index2 = 0;
 		}
 	}
 

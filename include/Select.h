@@ -14,6 +14,7 @@ public:
 		unsigned int initial_score = fitness.execute(input, output);
 		Solution<Size> initial_output(output);
 
+
 		do {
 			output = initial_output;
 
@@ -23,9 +24,8 @@ public:
 				output = initial_output;
 				return false;
 			}
-		} while(fitness.execute(input, output) >= initial_score);
 
-		neighborhood.selected();
+		} while(fitness.execute(input, output) >= initial_score);
 
 		return true;
 	}
